@@ -1,0 +1,11 @@
+---
+- name: Configure controller-manager
+  template: controller-manager.j2 dest=/etc/kubernetes/controller-manager
+
+- name: Configure config
+  template: config.j2 dest=/etc/kubernetes/config
+
+- name: Configure apiserver
+  template: apiserver.j2 dest=/etc/kubernetes/apiserver
+  notify:
+    - restart kubernetes services

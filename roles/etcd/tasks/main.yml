@@ -1,0 +1,8 @@
+---
+- name: Install etcd
+  yum: name=flannel state=latest
+
+- name: Configure etcd
+  template: src=etcd.conf.j2 dest=/etc/etcd/etcd.conf
+  notify:
+    - restart etcd
