@@ -1,2 +1,2 @@
 # ansible-kubernetes-centos
-Automation of deployment of Kubernetes on CentOS 7
+Deployment automation of Kubernetes on CentOS 7
