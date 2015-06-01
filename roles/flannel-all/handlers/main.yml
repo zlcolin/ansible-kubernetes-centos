@@ -1,0 +1,10 @@
+---
+- name: stop docker
+  service: name=docker state=stopped
+
+- name: delete docker0
+  command: /usr/sbin/ip link delete docker0
+  ignore_errors: yes
+
+- name: start docker
+  service: name=docker state=started

@@ -19,3 +19,13 @@
   sudo: yes
   roles:
     - minion
+
+- hosts: masters
+  sudo: yes
+  roles:
+    - flannel-master
+
+- hosts: all
+  sudo: yes
+  roles:
+    - flannel-all
