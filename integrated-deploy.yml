@@ -13,4 +13,9 @@
 - hosts: masters
   sudo: yes
   roles:
-    - masters
+    - master
+
+- hosts: minions
+  sudo: yes
+  roles:
+    - minion
