@@ -1,0 +1,16 @@
+---
+- hosts: all
+  sudo: yes
+  roles:
+    - common
+    - kubernetes
+
+- hosts: etcd
+  sudo: yes
+  roles:
+    - etcd
+
+- hosts: masters
+  sudo: yes
+  roles:
+    - masters
