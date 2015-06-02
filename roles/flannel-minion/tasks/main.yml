@@ -8,15 +8,21 @@
 - name: Enable and restart flanneld
   service: name=flanneld state=restarted enabled=yes
 
-- name: Stop docker
+- name: Stop Docker
   service: name=docker state=stopped
+
+- pause: seconds=2
 
 - name: Delete docker0
   command: ip link delete docker0
   ignore_errors: yes
 
+- pause: seconds=2
+
 - name: Start docker
   service: name=docker state=started
 
+- pause: seconds=2
+
 - name: Restart kubelet
-  service: name=kubelet state=restarted
+  service: name=kubelet state=started
