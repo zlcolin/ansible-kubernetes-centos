@@ -16,6 +16,8 @@
     - kube-controller-manager
     - kube-scheduler
 
+- pause: secondes=2
+
 - name: Identify nodes
   command: /usr/bin/curl -L http://{{ groups['masters'][0] }}:8080/api/v1beta3/nodes -XPOST -d '{"apiVersion":"v1beta3","kind":"Node","metadata":{"name":"{{ item }}","labels":{"name":"{{ item }}"}},"spec":{"externalID":"{{ item }}"}}'
   with_items: groups["minions"]
