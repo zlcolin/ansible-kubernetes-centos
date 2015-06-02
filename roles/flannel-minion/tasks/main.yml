@@ -12,7 +12,7 @@
   service: name=docker state=stopped
 
 - name: Delete docker0
-  command: ip link delete flanneld
+  command: ip link delete docker0
   ignore_errors: yes
 
 - name: Start docker
