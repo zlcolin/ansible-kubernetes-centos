@@ -7,10 +7,16 @@
 
 - name: Enable and restart flanneld
   service: name=flanneld state=restarted enabled=yes
-  notify:
-    - stop docker
-    - delete docker0
-    - start docker
+
+- name: Stop docker
+  service: name=docker state=stopped
+
+- name: Delete docker0
+  command: ip link delete flanneld
+  ignore_errors: yes
+
+- name: Start docker
+  service: name=docker state=started
 
 - name: Restart kubelet
   service: name=kubelet state=restarted
