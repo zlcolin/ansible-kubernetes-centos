@@ -1,3 +1,6 @@
 ---
 - name: Install kubernetes
   yum: name=kubernetes state=latest
+
+- name: Configure Docker HTTP Proxy
+  template: src=docker.j2 dest=/etc/sysconfig/docker
