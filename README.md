@@ -4,19 +4,20 @@ Deployment automation of Kubernetes on CentOS 7
 ### Prerequisite
 Suppose we have these nodes in the cluster:
 ```
-centos1 (master, etcd) = 10.0.0.1
-centos2 (minion) = 10.0.0.2
+centos1 (master) = 10.0.0.1
+centos2 (etcd)   = 10.0.0.2
 centos3 (minion) = 10.0.0.3
+centos4 (minion) = 10.0.0.4
 ```
 
-Create ssh public key on every node in the cluster (skip this step if you already have created the ssh public key):
+Create ssh public key on master node (skip this step if you already have created the ssh public key):
 ```
    ssh-keygen
 ```
 
 Copy master node ssh key to every single node within the cluster (including the master itself). Run:
 ```
-for ip in 10.0.0.1 10.0.0.2 10.0.0.3; do ssh-copy-id $ip; done
+for ip in 10.0.0.1 10.0.0.2 10.0.0.3 10.0.0.4; do ssh-copy-id $ip; done
 ```
 
 Now, make sure the master can ssh to every single node (including the master itself) without password.
