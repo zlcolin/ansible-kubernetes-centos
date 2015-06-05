@@ -15,3 +15,9 @@
 
 - name: Login registry
   command: /usr/bin/docker login -u {{ registry_username }} -p {{ registry_password }} -e {{ registry_email }} https://{{ docker_registry }}:8080
+
+- name: Copy dockercfg to /
+  command: /usr/bin/cp /root/.dockercfg /
+
+- name: Copy dockercfg to /var/lib/kubelet
+  command: /usr/bin/cp /root/.dockercfg /var/lib/kubelet/
