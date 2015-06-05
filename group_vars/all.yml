@@ -2,4 +2,8 @@ ansible_ssh_user: xuan_tang
 kube_service_addresses: 10.254.0.0/16
 flannel_ip: 11.1.1.1
 flannel_prefix: 16
-http_proxy:
+docker_registry: registry.example.com:8080
+registry_ca_path: /etc/pki/ca-trust/source/anchors/
+registry_username: username
+registry_password: password
+registry_email: test@test.com
