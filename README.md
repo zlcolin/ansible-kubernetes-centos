@@ -2,6 +2,7 @@
 Deployment automation of Kubernetes on CentOS 7
 
 ### Prerequisite
+##### SSH without password (optional, you can also use ansible-playbook flag to specify ssh credential)
 Suppose we have these nodes in the cluster:
 ```
 centos1 (master) = 10.0.0.1
@@ -21,6 +22,9 @@ for ip in 10.0.0.1 10.0.0.2 10.0.0.3 10.0.0.4; do ssh-copy-id $ip; done
 ```
 
 Now, make sure the master can ssh to every single node (including the master itself) without password.
+
+##### CA for private docker registry
+Make sure you have your private docker registry ca and put it in `roles/docker-registry/templates/dockerCA.crt`.
 
 ### Run ansible-playbook
 Before you really run ansible-playbook, you need to configure the `inventory` file in the root directory based on your own configuration. You should also configure the file `group_vars/all.yml` based on your own situation. After the customization, you can run this command on the master node:
