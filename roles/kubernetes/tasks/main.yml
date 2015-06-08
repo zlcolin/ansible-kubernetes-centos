@@ -1,13 +1,4 @@
 ---
-- name: Init fact enable_http_proxy for docker configuration
-  set_fact:
-    enable_proxy: false
-
-- name: Check enable_http_proxy
-  set_fact:
-    enable_proxy: true
-  when: enable_http_proxy == "1"
-
 - name: Install kubernetes
   yum: name=kubernetes state=latest
 

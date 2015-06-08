@@ -7,5 +7,5 @@ registry_ca_path: /etc/pki/ca-trust/source/anchors/
 registry_username: username
 registry_password: password
 registry_email: test@test.com
-enable_http_proxy: 0
+enable_http_proxy: false
 http_proxy:
