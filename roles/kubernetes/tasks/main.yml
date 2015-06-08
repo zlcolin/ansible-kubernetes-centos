@@ -6,7 +6,7 @@
 - name: Check enable_http_proxy
   set_fact:
     enable_proxy: true
-  when: {{ enable_http_proxy }} == 1
+  when: enable_http_proxy == "1"
 
 - name: Install kubernetes
   yum: name=kubernetes state=latest
