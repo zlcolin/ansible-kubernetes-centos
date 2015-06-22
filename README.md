@@ -44,3 +44,11 @@ NAME                            LABELS        STATUS
 10.0.0.2   Schedulable   name=10.0.0.2   Ready
 10.0.0.3   Schedulable   name=10.0.0.3   Ready
 ```
+
+### Configure internal DNS
+Make a rolling update by running the following command:
+```
+ansible-playbook -i inventory kubelet-rolling-update-dns.yml --ask-become-pass
+```
+This will make the kubelet on each node to restart one by one with the dns configuration flag.
+To make the add-on DNS to really work, you also need to run the SkyDNS controller and service yaml file.
