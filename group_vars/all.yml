@@ -1,6 +1,9 @@
 # user
 ansible_ssh_user: xuan_tang
 
+# kubernetes api version (default: v1)
+api_version: v1
+
 # service ip range and pod (flannel) ip range
 kube_service_addresses: 10.254.0.0/16
 flannel_ip: 11.1.1.1
