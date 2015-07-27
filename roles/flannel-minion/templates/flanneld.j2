@@ -1,11 +1,12 @@
 # Flanneld configuration options
 
 # etcd url location.  Point this to the server where etcd runs
-FLANNEL_ETCD="http://{{ groups['etcd'][0] }}:4001"
+FLANNEL_ETCD="http://{{ groups['etcd_flannel'][0] }}:4001"
 
 # etcd config key.  This is the configuration key that flannel queries
 # For address range assignment
 FLANNEL_ETCD_KEY="/coreos.com/network"
 
 # Any additional options that you want to pass
-#FLANNEL_OPTIONS=""
+#FLANNEL_OPTIONS="-etcd-cafile=/etc/kubernetes/etcdca.crt -etcd-certfile=/etc/kubernetes/master.etcd-client.crt -etcd-keyfile=/etc/kubernetes/master.etcd-client.key"
+FLANNEL_OPRTIONS=""

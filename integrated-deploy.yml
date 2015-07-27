@@ -10,6 +10,11 @@
   roles:
     - etcd
 
+- hosts: etcd_flannel
+  sudo: yes
+  roles:
+    - etcd_flannel
+
 - hosts: masters
   sudo: yes
   roles:
@@ -18,7 +23,6 @@
 - hosts: minions
   sudo: yes
   roles:
-    - docker-registry
     - minion
 
 - hosts: masters
