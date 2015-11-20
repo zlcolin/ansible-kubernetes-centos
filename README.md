@@ -5,10 +5,12 @@ Deployment automation of Kubernetes on CentOS 7
 ##### SSH without password (optional, you can also use ansible-playbook flag to specify ssh credential)
 Suppose we have these nodes in the cluster:
 ```
-centos1 (master) = 10.0.0.1
-centos2 (etcd)   = 10.0.0.2
-centos3 (minion) = 10.0.0.3
-centos4 (minion) = 10.0.0.4
+centos1 (master) = 192.168.228.70
+centos2 (etcd)   = 192.168.228.69
+centos3 (minion) = 192.168.228.68
+centos4 (minion) = 192.168.228.67
+centos5 (minion) = 192.168.228.66
+
 ```
 
 Create ssh public key on master node (skip this step if you already have created the ssh public key):
@@ -18,7 +20,7 @@ Create ssh public key on master node (skip this step if you already have created
 
 Copy master node ssh key to every single node within the cluster (including the master itself). Run:
 ```
-for ip in 10.0.0.1 10.0.0.2 10.0.0.3 10.0.0.4; do ssh-copy-id $ip; done
+for ip in 192.168.228.70 192.168.228.69 192.168.228.68 192.168.228.67 192.168.228.66; do ssh-copy-id $ip; done
 ```
 
 Now, make sure the master can ssh to every single node (including the master itself) without password.
@@ -40,9 +42,10 @@ kubectl get nodes
 
 If the deployment is successful, you should see something like this:
 ```
-NAME                            LABELS        STATUS
-10.0.0.2   Schedulable   name=10.0.0.2   Ready
-10.0.0.3   Schedulable   name=10.0.0.3   Ready
+NAME             LABELS                                  STATUS
+192.168.228.66   kubernetes.io/hostname=192.168.228.66   Ready
+192.168.228.67   kubernetes.io/hostname=192.168.228.67   Ready
+192.168.228.68   kubernetes.io/hostname=192.168.228.68   Ready
 ```
 
 ### Configure internal DNS
