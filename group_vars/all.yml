@@ -1,5 +1,5 @@
 # user
-ansible_ssh_user: xuan_tang
+ansible_ssh_user: root
 
 # kubernetes api version (default: v1)
 api_version: v1

@@ -53,3 +53,17 @@ ansible-playbook -i inventory kubelet-rolling-update-dns.yml --ask-become-pass
 ```
 This will make the kubelet on each node to restart one by one with the dns configuration flag.
 To make the add-on DNS to really work, you also need to run the SkyDNS controller and service yaml file.
+
+### Trouble Shooting
+```
+group_vars/all.yml  change "ansible_ssh_user: xuan_tang" to fixed user e.g: root
+yum install -y flannel if automatic install fail in master and minion machines.
+
+If it's successful by ansible, you should see something like this:
+```
+PLAY RECAP ********************************************************************
+192.168.228.67             : ok=20   changed=5    unreachable=0    failed=0
+192.168.228.68             : ok=20   changed=5    unreachable=0    failed=0
+192.168.228.69             : ok=8    changed=1    unreachable=0    failed=0
+192.168.228.70             : ok=14   changed=3    unreachable=0    failed=0
+```
