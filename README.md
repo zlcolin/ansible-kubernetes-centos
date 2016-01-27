@@ -9,7 +9,6 @@ centos1 (master) = 192.168.228.70
 centos2 (etcd)   = 192.168.228.69
 centos3 (minion) = 192.168.228.68
 centos4 (minion) = 192.168.228.67
-centos5 (minion) = 192.168.228.66
 
 ```
 
@@ -20,7 +19,7 @@ Create ssh public key on master node (skip this step if you already have created
 
 Copy master node ssh key to every single node within the cluster (including the master itself). Run:
 ```
-for ip in 192.168.228.70 192.168.228.69 192.168.228.68 192.168.228.67 192.168.228.66; do ssh-copy-id $ip; done
+for ip in 192.168.228.70 192.168.228.69 192.168.228.68 192.168.228.67; do ssh-copy-id $ip; done
 ```
 
 Now, make sure the master can ssh to every single node (including the master itself) without password.
@@ -43,7 +42,6 @@ kubectl get nodes
 If the deployment is successful, you should see something like this:
 ```
 NAME             LABELS                                  STATUS
-192.168.228.66   kubernetes.io/hostname=192.168.228.66   Ready
 192.168.228.67   kubernetes.io/hostname=192.168.228.67   Ready
 192.168.228.68   kubernetes.io/hostname=192.168.228.68   Ready
 ```
